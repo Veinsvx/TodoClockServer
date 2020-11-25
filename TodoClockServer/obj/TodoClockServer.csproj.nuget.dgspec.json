@@ -38,26 +38,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "DotNetty.Buffers": {
-              "target": "Package",
-              "version": "[0.6.0, )"
-            },
-            "DotNetty.Codecs": {
-              "target": "Package",
-              "version": "[0.6.0, )"
-            },
-            "DotNetty.Common": {
-              "target": "Package",
-              "version": "[0.6.0, )"
-            },
-            "DotNetty.Handlers": {
-              "target": "Package",
-              "version": "[0.6.0, )"
-            },
-            "DotNetty.Transport": {
-              "target": "Package",
-              "version": "[0.6.0, )"
-            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"

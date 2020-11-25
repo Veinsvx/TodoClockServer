@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Text;
+using System.Collections.Generic;
 
 namespace TodoClockServer
 {
@@ -66,7 +67,7 @@ namespace TodoClockServer
                         recevieThread.Start(clientSocket);//运行新的Socket接受信息
                         ifFlag = false;
                     }
-                    else if(msg == "Down")
+                    else if (msg == "Down")
                     {
 
                     }
@@ -76,7 +77,7 @@ namespace TodoClockServer
             Console.WriteLine("与设备{0}断开连接，主连接线程结束", SocketClient.RemoteEndPoint);
             SocketClient.Close();
             whileFlag = true;
-            ifFlag = true;      
+            ifFlag = true;
         }
 
         public static void UpConTroll(object obj)
@@ -109,7 +110,7 @@ namespace TodoClockServer
                     }
                 }
             }
-            Console.WriteLine("设备{0}开启的线程UpConTroll已退出",SocketClient.RemoteEndPoint);
+            Console.WriteLine("设备{0}开启的线程UpConTroll已退出", SocketClient.RemoteEndPoint);
         }
 
         private static void ClockStart(object obj)
@@ -132,17 +133,59 @@ namespace TodoClockServer
         {
             Socket SocketClient = (Socket)obj;
             SocketClient.Send(Encoding.UTF8.GetBytes("clockStart"));//给客户端发送信息
-            while (true)
-            {
-                int num = SocketClient.Receive(result);//把接受到的数据存到bytes数组中并赋值给num
-                string msg = Encoding.UTF8.GetString(result, 0, num);
-                //用包头方式接收完数据并退出循环结束线程
-                break;
-            }
+            ReviceData(SocketClient,"Clock");
             up_ifFlag = true;
             SocketClient.Send(Encoding.UTF8.GetBytes("clockCP"));
             Console.WriteLine("接收设备{0}的ClockJson文件的线程结束了", SocketClient.RemoteEndPoint);
         }
-    }
 
+        private static void ReviceData(Socket _tcpClient,string jsonName)
+        {
+
+            byte[] head = new byte[7];
+            var receiveCount = _tcpClient.Receive(head);
+            if (receiveCount != 0)
+            {
+                if (CoreManger.ParseHead(head, out SocketHead socketHead))
+                {
+                    var len = socketHead.Length;
+                    List<byte> data = new List<byte>();
+                    int totalCount = 0;
+                    int tmpSize = 0;
+                    while (totalCount < len)
+                    {
+                        tmpSize = _tcpClient.Available;
+                        if (tmpSize == 0)
+                        {
+                            Thread.Sleep(10);
+                            continue;
+                        }
+
+                        //保证接收到的数据是协议内的数据
+                        if (totalCount + tmpSize >= len)
+                        {
+                            var buffer = new byte[len - totalCount];
+                            _tcpClient.Receive(buffer);
+                            data.AddRange(buffer);
+                            totalCount = len;
+                        }
+                        else
+                        {
+                            var receiveBuffer = new byte[tmpSize];
+                            _tcpClient.Receive(receiveBuffer);
+                            data.AddRange(receiveBuffer);
+                            totalCount += tmpSize;
+                        }
+                    }
+
+                    //DataReceived?.Invoke(this, new SocketDataArgs(data.ToArray()));
+                }
+            }
+            else
+            {
+                //数据接收返回为0，表示连接已经断开了，需要做重连
+                throw new SocketException(5);
+            }
+        }
+    }
 }
