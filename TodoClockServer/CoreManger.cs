@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace TodoClockServer
 {
@@ -55,6 +57,7 @@ namespace TodoClockServer
         {//解析数据包头
             if (data.Length >= 7)
             {
+                
                 socketHead = new SocketHead
                 {
                     StartFlag = data[0],
@@ -64,6 +67,7 @@ namespace TodoClockServer
                 //验证数据是否正确
                 if (socketHead.CheckNum == socketHead.StartFlag + socketHead.Cmd)
                 {
+                    Console.WriteLine("jinru");
                     socketHead.Length = ToInt32(data, 3);
                     return true;
                 }
@@ -71,6 +75,21 @@ namespace TodoClockServer
             }
             socketHead = new SocketHead();
             return false;
+        }
+
+        public static string Decodeing(string s)
+        {
+            Regex reUnicode = new Regex(@"\\u([0-9a-fA-F]{4})", RegexOptions.Compiled);
+            return reUnicode.Replace(s, m =>
+            {
+                short c;
+                if (short.TryParse(m.Groups[1].Value, System.Globalization.NumberStyles.HexNumber, CultureInfo.InvariantCulture, out c))
+                {
+                    return "" + (char)c;
+                }
+                return m.Value;
+            });
+
         }
     }
 }

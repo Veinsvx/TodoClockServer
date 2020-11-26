@@ -10,11 +10,11 @@
         "projectUniqueName": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
         "projectName": "TodoClockServer",
         "projectPath": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\veinsvxshao\\.nuget\\packages\\",
         "outputPath": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\veinsvxshao\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\PROGRAM FILES\\DOTNET\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
