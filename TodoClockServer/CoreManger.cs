@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -57,7 +58,7 @@ namespace TodoClockServer
         {//解析数据包头
             if (data.Length >= 7)
             {
-                
+
                 socketHead = new SocketHead
                 {
                     StartFlag = data[0],
@@ -75,6 +76,21 @@ namespace TodoClockServer
             }
             socketHead = new SocketHead();
             return false;
+        }
+        /// <summary>
+        /// 读取本地todoJson文件，将其转换为string类型
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string ReadJsonFun(string strPath)
+        {
+            string dataAsJson = "";
+            dataAsJson = File.ReadAllText(strPath, Encoding.UTF8);
+            if (dataAsJson != null)
+            {
+                return dataAsJson;
+            }
+            return dataAsJson;
         }
 
         public static string Decodeing(string s)

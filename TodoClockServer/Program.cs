@@ -109,9 +109,31 @@ namespace TodoClockServer
                     BodyLength -= iBytesBody;
                 }
                 //一个消息包接收完毕，解析消息包
-                if(UnpackData(recvBytesHead, recvBytesBody)[0] == "下载")
+                Console.Write("从设备{0}", SocketClient.RemoteEndPoint);
+                string[] strTemp = UnpackData(recvBytesHead, recvBytesBody);
+                if (strTemp[0] == "下载")
                 {
-                    Console.WriteLine("用户点击了下载");
+                    Console.WriteLine("设备{0}点击了下载", SocketClient.RemoteEndPoint);
+                    string[] JsonStr = new string[2];
+                    JsonStr[0] = CoreManger.ReadJsonFun($"{System.Environment.CurrentDirectory}" + "\\TodoList.json");
+                    JsonStr[1] = CoreManger.ReadJsonFun($"{System.Environment.CurrentDirectory}" + "\\ClockTime.json");
+                    byte[] sendBytes = BuildDataPackage(1, 233, 3, 4, 5, JsonStr);
+                    Console.WriteLine("要发送给设备{0}的数据包的总长度为为{1}", SocketClient.RemoteEndPoint, sendBytes.Length);
+                    SocketClient.Send(sendBytes, sendBytes.Length, 0);
+                    Console.WriteLine("发送给设备{0}的Todo数据为{1}，Clock数据为{2}", SocketClient.RemoteEndPoint, JsonStr[0], JsonStr[1]);
+                }
+                else
+                {
+                    if(strTemp.Length>2)
+                    {
+                        File.WriteAllText($"{System.Environment.CurrentDirectory}" + "\\TodoList.json", strTemp[0]);
+                        File.WriteAllText($"{System.Environment.CurrentDirectory}" + "\\ClockTime.json", strTemp[1]);
+                        Console.WriteLine("设备{0}发送过来的Json文件写入完成", SocketClient.RemoteEndPoint);
+                    }
+                    else
+                    {
+                        Console.WriteLine("设备{0}发送过来的数据可能不完整",SocketClient.RemoteEndPoint);
+                    }                   
                 }
                 break;
             }
@@ -120,66 +142,6 @@ namespace TodoClockServer
             SocketClient.Close();
             whileFlag = true;
             ifFlag = true;
-        }
-
-        public static void UpConTroll(object obj)
-        {
-            Socket SocketClient = (Socket)obj;
-            SocketClient.Send(Encoding.UTF8.GetBytes("con"));//给客户端发送信息
-            while (true)
-            {
-                if (up_ifFlag)
-                {
-                    int num = SocketClient.Receive(result);//把接受到的数据存到bytes数组中并赋值给num
-                    string msg = Encoding.UTF8.GetString(result, 0, num);
-                    Console.WriteLine("在上传接收线程中，设备{0}发送的消息是：{1}", SocketClient.RemoteEndPoint.ToString(), msg);
-                    if (msg == "todo")
-                    {
-                        up_ifFlag = false;
-                        Thread recevieThread = new Thread(TodoStart);//创建一个接收todojson的进程
-                        recevieThread.Start(obj);//运行新的Socket接受信息                      
-                    }
-                    else if (msg == "clock")
-                    {
-                        up_ifFlag = false;
-                        Thread recevieThread = new Thread(ClockStart);//创建一个接收todojson的进程
-                        recevieThread.Start(obj);//运行新的Socket接受信息                       
-                    }
-                    else if (msg == "exit")
-                    {
-                        whileFlag = false;//连接传输完就直接退出
-                        break;
-                    }
-                }
-            }
-            Console.WriteLine("设备{0}开启的线程UpConTroll已退出", SocketClient.RemoteEndPoint);
-        }
-
-        private static void ClockStart(object obj)
-        {
-            Socket SocketClient = (Socket)obj;
-            SocketClient.Send(Encoding.UTF8.GetBytes("todoStart"));//给客户端发送信息
-            while (true)
-            {
-                int num = SocketClient.Receive(result);//把接受到的数据存到bytes数组中并赋值给num
-                string msg = Encoding.UTF8.GetString(result, 0, num);
-                //用包头方式接收完数据并退出循环结束线程
-                break;
-            }
-            up_ifFlag = true;
-            SocketClient.Send(Encoding.UTF8.GetBytes("todoCP"));
-            Console.WriteLine("接收设备{0}的ClockJson文件的线程结束了", SocketClient.RemoteEndPoint);
-        }
-
-        private static void TodoStart(object obj)
-        {
-            Socket SocketClient = (Socket)obj;
-            SocketClient.Send(Encoding.UTF8.GetBytes("clockStart"));//给客户端发送信息
-
-
-            up_ifFlag = true;
-            SocketClient.Send(Encoding.UTF8.GetBytes("clockCP"));
-            Console.WriteLine("接收设备{0}的TodoJson文件的线程结束了", SocketClient.RemoteEndPoint);
         }
 
 
@@ -192,23 +154,23 @@ namespace TodoClockServer
         {
             byte[] bytes = new byte[4];
             Array.Copy(Head, 0, bytes, 0, 4);
-            Console.WriteLine("接收到数据包中的校验码为：" + IPAddress.NetworkToHostOrder(BitConverter.ToInt32(bytes, 0)));
+            //Console.WriteLine("接收到数据包中的校验码为：" + IPAddress.NetworkToHostOrder(BitConverter.ToInt32(bytes, 0)));
 
             bytes = new byte[8];
             Array.Copy(Head, 8, bytes, 0, 8);
-            Console.WriteLine("接收到数据包中的身份ID为：" + IPAddress.NetworkToHostOrder(BitConverter.ToInt64(bytes, 0)));
+            //Console.WriteLine("接收到数据包中的身份ID为：" + IPAddress.NetworkToHostOrder(BitConverter.ToInt64(bytes, 0)));
 
             bytes = new byte[4];
             Array.Copy(Head, 16, bytes, 0, 4);
-            Console.WriteLine("接收到数据包中的数据主命令为：" + IPAddress.NetworkToHostOrder(BitConverter.ToInt32(bytes, 0)));
+            //Console.WriteLine("接收到数据包中的数据主命令为：" + IPAddress.NetworkToHostOrder(BitConverter.ToInt32(bytes, 0)));
 
             bytes = new byte[4];
             Array.Copy(Head, 20, bytes, 0, 4);
-            Console.WriteLine("接收到数据包中的数据子命令为：" + IPAddress.NetworkToHostOrder(BitConverter.ToInt32(bytes, 0)));
+            //Console.WriteLine("接收到数据包中的数据子命令为：" + IPAddress.NetworkToHostOrder(BitConverter.ToInt32(bytes, 0)));
 
             bytes = new byte[4];
             Array.Copy(Head, 24, bytes, 0, 4);
-            Console.WriteLine("接收到数据包中的数据加密方式为：" + IPAddress.NetworkToHostOrder(BitConverter.ToInt32(bytes, 0)));
+            //Console.WriteLine("接收到数据包中的数据加密方式为：" + IPAddress.NetworkToHostOrder(BitConverter.ToInt32(bytes, 0)));
 
             bytes = new byte[Body.Length];
             string[] strmsg = new string[Body.Length];
@@ -282,7 +244,7 @@ namespace TodoClockServer
             encryptByte.CopyTo(totalByte, 24);
             //组合数据包体
             MessageBodyByte.CopyTo(totalByte, 28);
-            Console.WriteLine("发送数据包的总长度为：" + totalByte.Length);
+            //Console.WriteLine("发送数据包的总长度为：" + totalByte.Length);
             return totalByte;
         }
 

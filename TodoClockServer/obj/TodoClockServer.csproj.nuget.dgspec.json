@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitProject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj": {}
+    "C:\\Porject\\githubPorject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj": {}
   },
   "projects": {
-    "C:\\GitProject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj": {
+    "C:\\Porject\\githubPorject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
+        "projectUniqueName": "C:\\Porject\\githubPorject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
         "projectName": "TodoClockServer",
-        "projectPath": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
-        "packagesPath": "C:\\Users\\veinsvxshao\\.nuget\\packages\\",
-        "outputPath": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\obj\\",
+        "projectPath": "C:\\Porject\\githubPorject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Porject\\githubPorject\\TodoClockServer\\TodoClockServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\veinsvxshao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\PROGRAM FILES\\DOTNET\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
