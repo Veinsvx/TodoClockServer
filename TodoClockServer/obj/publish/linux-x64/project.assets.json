@@ -1,7 +1,8 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {},
+    ".NETCoreApp,Version=v3.1/linux-x64": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
@@ -17,7 +18,7 @@
       "projectName": "TodoClockServer",
       "projectPath": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
       "packagesPath": "C:\\Users\\veinsvxshao\\.nuget\\packages\\",
-      "outputPath": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\obj\\",
+      "outputPath": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\obj\\publish\\linux-x64\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\veinsvxshao\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,12 +54,23 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.linux-x64",
+            "version": "[3.1.0, 3.1.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
         "runtimeIdentifierGraphPath": "C:\\PROGRAM FILES\\DOTNET\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "linux-x64": {
+        "#import": []
       }
     }
   }

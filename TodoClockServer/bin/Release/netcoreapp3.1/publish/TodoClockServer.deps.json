@@ -1,11 +1,12 @@
 {
   "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v3.1",
+    "name": ".NETCoreApp,Version=v3.1/linux-x64",
     "signature": ""
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    ".NETCoreApp,Version=v3.1": {},
+    ".NETCoreApp,Version=v3.1/linux-x64": {
       "TodoClockServer/1.0.0": {
         "runtime": {
           "TodoClockServer.dll": {}
