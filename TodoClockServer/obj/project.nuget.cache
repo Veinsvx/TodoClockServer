@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k1Gnv092J3z9pLNyVMcH5cxejjMhuMqb/6/tkzhbCFAa3ToqT2+ktfc3M0PZ1DH/0y74o1z4O9JpWxCYY8j4sg==",
+  "dgSpecHash": "+y8Ud8RDMzhvtrHjFK3rxbq2aRU64l2j8hVEWgyVPEGznroqmZLD7Iu67Muflv2zHI/gjhkcOHzldZJj8JRW1g==",
   "success": true,
-  "projectFilePath": "C:\\Porject\\githubPorject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
+  "projectFilePath": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
