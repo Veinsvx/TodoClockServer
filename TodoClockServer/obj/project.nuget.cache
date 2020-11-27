@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pPSmlBaS7SNPd9NHUIQDijMM2cQCCjZT9T2ziJGJ9xnZ5AxwtHH0m1Xb9sxF+7dnShg7mvw4YfQvTPETEQz79w==",
+  "dgSpecHash": "k1Gnv092J3z9pLNyVMcH5cxejjMhuMqb/6/tkzhbCFAa3ToqT2+ktfc3M0PZ1DH/0y74o1z4O9JpWxCYY8j4sg==",
   "success": true,
-  "projectFilePath": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\admin\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Porject\\githubPorject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

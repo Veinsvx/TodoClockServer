@@ -8,3 +8,15 @@ C:\GitProject\TodoClockServer\TodoClockServer\obj\Release\netcoreapp3.1\linux-x6
 C:\GitProject\TodoClockServer\TodoClockServer\obj\Release\netcoreapp3.1\linux-x64\TodoClockServer.AssemblyInfo.cs
 C:\GitProject\TodoClockServer\TodoClockServer\obj\Release\netcoreapp3.1\linux-x64\TodoClockServer.dll
 C:\GitProject\TodoClockServer\TodoClockServer\obj\Release\netcoreapp3.1\linux-x64\TodoClockServer.pdb
+C:\Porject\githubPorject\TodoClockServer\TodoClockServer\bin\Release\netcoreapp3.1\linux-x64\TodoClockServer
+C:\Porject\githubPorject\TodoClockServer\TodoClockServer\bin\Release\netcoreapp3.1\linux-x64\TodoClockServer.deps.json
+C:\Porject\githubPorject\TodoClockServer\TodoClockServer\bin\Release\netcoreapp3.1\linux-x64\TodoClockServer.runtimeconfig.json
+C:\Porject\githubPorject\TodoClockServer\TodoClockServer\bin\Release\netcoreapp3.1\linux-x64\TodoClockServer.runtimeconfig.dev.json
+C:\Porject\githubPorject\TodoClockServer\TodoClockServer\bin\Release\netcoreapp3.1\linux-x64\TodoClockServer.dll
+C:\Porject\githubPorject\TodoClockServer\TodoClockServer\bin\Release\netcoreapp3.1\linux-x64\TodoClockServer.pdb
+C:\Porject\githubPorject\TodoClockServer\TodoClockServer\obj\Release\netcoreapp3.1\linux-x64\TodoClockServer.AssemblyInfoInputs.cache
+C:\Porject\githubPorject\TodoClockServer\TodoClockServer\obj\Release\netcoreapp3.1\linux-x64\TodoClockServer.AssemblyInfo.cs
+C:\Porject\githubPorject\TodoClockServer\TodoClockServer\obj\Release\netcoreapp3.1\linux-x64\TodoClockServer.csproj.CoreCompileInputs.cache
+C:\Porject\githubPorject\TodoClockServer\TodoClockServer\obj\Release\netcoreapp3.1\linux-x64\TodoClockServer.dll
+C:\Porject\githubPorject\TodoClockServer\TodoClockServer\obj\Release\netcoreapp3.1\linux-x64\TodoClockServer.pdb
+C:\Porject\githubPorject\TodoClockServer\TodoClockServer\obj\Release\netcoreapp3.1\linux-x64\TodoClockServer.genruntimeconfig.cache

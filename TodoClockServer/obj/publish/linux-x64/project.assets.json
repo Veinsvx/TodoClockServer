@@ -9,19 +9,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\veinsvxshao\\.nuget\\packages\\": {}
+    "C:\\Users\\admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
+      "projectUniqueName": "C:\\Porject\\githubPorject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
       "projectName": "TodoClockServer",
-      "projectPath": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
-      "packagesPath": "C:\\Users\\veinsvxshao\\.nuget\\packages\\",
-      "outputPath": "C:\\GitProject\\TodoClockServer\\TodoClockServer\\obj\\publish\\linux-x64\\",
+      "projectPath": "C:\\Porject\\githubPorject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Porject\\githubPorject\\TodoClockServer\\TodoClockServer\\obj\\publish\\linux-x64\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\veinsvxshao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -57,7 +57,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Host.linux-x64",
-            "version": "[3.1.0, 3.1.0]"
+            "version": "[3.1.6, 3.1.6]"
           }
         ],
         "frameworkReferences": {
@@ -65,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\PROGRAM FILES\\DOTNET\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

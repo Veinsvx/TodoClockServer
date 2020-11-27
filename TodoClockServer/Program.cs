@@ -115,6 +115,14 @@ namespace TodoClockServer
                     string[] JsonStr = new string[2];
                     JsonStr[0] = CoreManger.ReadJsonFun($"{System.Environment.CurrentDirectory}" + "\\TodoList.json");
                     JsonStr[1] = CoreManger.ReadJsonFun($"{System.Environment.CurrentDirectory}" + "\\ClockTime.json");
+                    if (JsonStr[0] == "")
+                    {
+                        JsonStr[0] = "清空";
+                    }
+                    if (JsonStr[1] == "")
+                    {
+                        JsonStr[1] = "清空";
+                    }
                     byte[] sendBytes = BuildDataPackage(1, 233, 3, 4, 5, JsonStr);
                     Console.WriteLine("要发送给设备{0}的数据包的总长度为为{1}", SocketClient.RemoteEndPoint, sendBytes.Length);
                     SocketClient.Send(sendBytes, sendBytes.Length, 0);
@@ -124,8 +132,25 @@ namespace TodoClockServer
                 {
                     if(strTemp.Length>2)
                     {
-                        File.WriteAllText($"{System.Environment.CurrentDirectory}" + "\\TodoList.json", strTemp[0]);
-                        File.WriteAllText($"{System.Environment.CurrentDirectory}" + "\\ClockTime.json", strTemp[1]);
+                        if (strTemp[0] == "清空")
+                        {
+                            Console.WriteLine("设备{0}发送的TodoList为空数据,即将清空文件", SocketClient.RemoteEndPoint);
+                            File.WriteAllText($"{System.Environment.CurrentDirectory}" + "\\TodoList.json", "");
+                        }
+                        else
+                        {
+                            File.WriteAllText($"{System.Environment.CurrentDirectory}" + "\\TodoList.json", strTemp[0]);
+                        }
+                        if (strTemp[1] == "清空")
+                        {
+                            Console.WriteLine("设备{0}发送的ClockTime为空数据,即将清空文件", SocketClient.RemoteEndPoint);
+                            File.WriteAllText($"{System.Environment.CurrentDirectory}" + "\\ClockTime.json", "");
+                        }
+                        else
+                        {
+                            File.WriteAllText($"{System.Environment.CurrentDirectory}" + "\\ClockTime.json", strTemp[1]);
+                        }
+                        
                         Console.WriteLine("设备{0}发送过来的Json文件写入完成", SocketClient.RemoteEndPoint);
                     }
                     else

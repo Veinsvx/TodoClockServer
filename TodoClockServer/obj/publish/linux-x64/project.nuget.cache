@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "sEDKA89NJ4sWMyns6PewRWW1nhjqc019qOgN81TwP4SqwjtuFP5SqCU0mo4BqQz9MyZFFkE0ZzO+CZEbfxwzrQ==",
+  "success": true,
+  "projectFilePath": "C:\\Porject\\githubPorject\\TodoClockServer\\TodoClockServer\\TodoClockServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\3.1.6\\microsoft.netcore.app.host.linux-x64.3.1.6.nupkg.sha512"
+  ],
+  "logs": []
+}
